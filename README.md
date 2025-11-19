@@ -44,3 +44,112 @@ This repository documents my **learnings, challenges, implemented solutions, and
 - Continuously **learn new backend patterns and tools**  
 
 ---
+
+
+---
+
+# 🛒 E-Commerce Backend  
+### **ALX ProDev Backend Engineering – Capstone Project**
+
+This repository contains my **E-Commerce Backend System**, developed as part of the **ALX ProDev Backend Engineering** program.  
+The goal of this project is to build a **scalable, secure, and fully documented backend API** for managing an online product catalog, user authentication, and product exploration features.
+
+---
+
+## 🔍 Project Overview
+
+The E-Commerce Backend is a real-world simulation of building the backend for a product catalog system. It focuses on:
+
+- Clean API design  
+- Security  
+- Database optimization  
+- Scalability  
+- Documentation  
+
+---
+
+## 🎯 Project Goals
+
+### ✔ 1. Build CRUD APIs  
+- Products  
+- Categories  
+- User authentication (JWT)  
+- Profiles  
+
+### ✔ 2. Implement Core E-Commerce Logic  
+- Filtering  
+- Sorting  
+- Pagination  
+- Efficient DB queries  
+
+### ✔ 3. Database Design  
+- PostgreSQL relational schema  
+- Indexing  
+- Reference integrity (FKs)  
+
+### ✔ 4. Full Swagger Documentation  
+- Endpoint examples  
+- Request/response schemas  
+- Authentication samples  
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|------|------------|
+| Backend | Django |
+| API | Django REST Framework |
+| Auth | JWT |
+| Database | PostgreSQL |
+| Documentation | Swagger / OpenAPI |
+| Version Control | Git & GitHub |
+
+---
+
+## 🗂️ Features
+
+### 🔐 Authentication  
+- JWT login & registration  
+- Profile management  
+
+### 📦 Product Management  
+- CRUD operations  
+- Product detail endpoint  
+
+### 🏷 Category Management  
+- CRUD operations  
+- Category–product filtering  
+
+### 🔎 Search & Discovery  
+- Filtering  
+- Sorting  
+- Pagination  
+
+### 📘 API Documentation  
+- Swagger UI  
+- OpenAPI schema  
+
+---
+
+## 🚀 How to Run Locally
+
+```bash
+# Clone repository
+git clone https://github.com/<your-username>/alx-project-nexus.git
+
+cd alx-project-nexus
+
+# Virtual environment
+python3 -m venv env
+source env/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Migrate
+python manage.py migrate
+
+# Run server
+python manage.py runserver
+
