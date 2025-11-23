@@ -37,8 +37,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
    
     # my apps api urls
-    #path('api/', include('product.urls')),  
-   
+    path('api/users/', include('users.urls')), 
+    path('api/reviews/', include('reviews.urls')),  
+    path('api/products/', include('products.urls')),  
+    path('api/orders/', include('orders.urls')),  
+    path('api/order_items/', include('order_items.urls')),  
+    path('api/categories/', include('categories.urls')),  
+    path('api/carts/', include('cart.urls')),  
+    path('api/carts-items/', include('cart.urls')),  
+
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-schema'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='redoc-schema'),
 ]

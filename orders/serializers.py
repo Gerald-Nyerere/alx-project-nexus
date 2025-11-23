@@ -13,4 +13,3 @@ class OrderSerializer(serializers.ModelSerializer):
             'order_date',
             'total_amount',
         ]
-        read_only_fields = ['user_email', 'order_date']

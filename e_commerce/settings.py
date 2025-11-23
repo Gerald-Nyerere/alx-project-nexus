@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # Third party apps
     "rest_framework",
+    'rest_framework.authtoken',
     "corsheaders",
     "drf_yasg",
 
@@ -155,3 +156,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+# token authhetication
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}

@@ -15,4 +15,3 @@ class CategorySerializer(serializers.ModelSerializer):
             'image_url',
             'is_active',
         ]
-        read_only_fields = ['category_id', 'parent_name']

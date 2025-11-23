@@ -16,7 +16,6 @@ class OrderItemSerializer(serializers.ModelSerializer):
             'unit_price',
             'subtotal',
         ]
-        read_only_fields = ['order_number', 'product_name', 'subtotal']
 
     def create(self, validated_data):
         # subtotal will be auto-calculated in model's save()

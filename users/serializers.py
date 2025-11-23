@@ -3,15 +3,19 @@ from .models import User
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, min_length=6)
-
+    first_name = serializers.CharField(required=True)
+    last_name = serializers.CharField(required=True)
+    roles = serializers.ChoiceField(choices=User.ROLE_CHOICES, required=True)
+    phone = serializers.CharField(required=True)
+    
     class Meta:
         model = User
         fields = ['email', 'password', 'first_name', 'last_name', 'roles', 'phone']
-        read_only_fields = ['user_id', 'created_at', 'updated_at']
 
     def create(self, validated_data):
         password = validated_data.pop('password')
         user = User(**validated_data)
+        # HASH PASSWORD
         user.set_password(password)
         user.save()
         return user
@@ -21,6 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
         if password:
+            # HASH PASSWORD
             instance.set_password(password)
         instance.save()
         return instance
