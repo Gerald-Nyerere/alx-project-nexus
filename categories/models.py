@@ -9,9 +9,7 @@ class Category(models.Model):
 
     # Self-referencing field for parent categories
     parent_category = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='subcategories')
-
     image_url = models.URLField(blank=True, null=True)
-
     is_active = models.BooleanField(default=True)
 
     created_at = models.DateTimeField(auto_now_add=True)

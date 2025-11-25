@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated 
+from users.permissions import IsAdmin, IsCustomer
 from .models import CartItem, ShoppingCart
 from .serializers import CartItemSerializer, ShoppingCartSerializer
 
@@ -10,6 +12,18 @@ class ShoppingCartViewSet(viewsets.ModelViewSet):
     """
     queryset = ShoppingCart.objects.all()
     serializer_class = ShoppingCartSerializer
+    
+    #permisions to differnt users
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [IsAuthenticated()]  
+        elif self.action == 'create':
+            return [IsCustomer()]  
+        elif self.action in ['update', 'partial_update']:
+            return [IsCustomer()]  
+        elif self.action == 'destroy':
+            return [IsCustomer()]  
+        return [IsAuthenticated()]
 
 class CartItemViewSet(viewsets.ModelViewSet):
     """
@@ -17,3 +31,18 @@ class CartItemViewSet(viewsets.ModelViewSet):
     """
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
+    
+    #permisions to differnt users
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [IsAuthenticated()]
+        elif self.action == 'create':
+            return [IsCustomer()]
+        elif self.action in ['update', 'partial_update']:
+            return [IsCustomer()]
+        elif self.action == 'destroy':
+            return [IsCustomer()]
+        return [IsAuthenticated()]
+
+
+# this is how i should update othervies for trhe permisions because the admin is already added to the permisions

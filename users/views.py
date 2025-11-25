@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets, generics, status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAdminUser
 from .serializers import UserSerializer
 
 # Create your views here.
@@ -12,16 +13,16 @@ User = get_user_model()
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated] 
+    serializer_class = UserSerializer 
 
-    # Optional: only admin can list/delete users
+    # only admin can list/delete users
     def get_permissions(self):
-        if self.action in ['create']:  # Anyone can create
+        if self.action in ['create']: 
             return [AllowAny()]
-        if self.action in ['destroy', 'list']:  # Only admin
-            from rest_framework.permissions import IsAdminUser
+        if self.action in ['destroy', 'list']: 
             return [IsAdminUser()]
+        if self.action in ['update', 'partial_update']:
+            return [IsAuthenticated()]         
         return super().get_permissions()
 
 
@@ -44,7 +45,6 @@ class UserRegistration(generics.CreateAPIView):
 # User Login
 class UserLoginView(generics.GenericAPIView):
     permission_classes = [AllowAny]
-    serializer_class = UserSerializer
 
     def post(self, request):
         email = request.data.get('email')
