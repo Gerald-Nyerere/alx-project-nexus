@@ -14,13 +14,13 @@ class ReviewViewSet(viewsets.ModelViewSet):
         if self.action in ['list', 'retrieve']:
             return [AllowAny()] 
     
-        if self.action == 'create':
+        elif self.action == 'create':
             return [IsCustomer()]  
         
-        if self.action in ['update', 'partial_update', 'destroy']:
+        elif self.action in ['update', 'partial_update', 'destroy']:
             return [IsCustomer(), IsModerator()] 
         
-        if self.action == 'destroy':
+        elif self.action == 'destroy':
             return [IsModerator()]
         
         return [IsAuthenticated()]

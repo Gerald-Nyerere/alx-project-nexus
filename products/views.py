@@ -15,14 +15,14 @@ class ProductViewSet(viewsets.ModelViewSet):
         if self.action in ['list', 'retrieve']:
             return [IsAuthenticated()]
         
-        if self.action == 'create':
+        elif self.action == 'create':
             return [IsVendor()]
 
 
-        if self.action in ['update', 'partial_update']:
+        elif self.action in ['update', 'partial_update']:
             return [IsVendor()]
 
-        if self.action == 'destroy':
+        elif self.action == 'destroy':
             return [IsAdmin()]
 
         return [IsAuthenticated()]
