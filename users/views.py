@@ -1,34 +1,26 @@
-from django.shortcuts import render
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import get_user_model
+from rest_framework import generics, viewsets, status
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
-from rest_framework import viewsets, generics, status
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.authtoken.models import Token
-from rest_framework.permissions import IsAdminUser
+from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import UserSerializer
-
-# Create your views here.
 
 User = get_user_model()
 
+# CRUD for admin
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
-    serializer_class = UserSerializer 
+    serializer_class = UserSerializer
 
-    # only admin can list/delete users
     def get_permissions(self):
-        if self.action in ['create']: 
-            return [AllowAny()]
-        if self.action in ['destroy', 'list']: 
+        if self.action in ['list', 'retrieve', 'destroy']:
             return [IsAdminUser()]
-        if self.action in ['update', 'partial_update']:
-            return [IsAuthenticated()]         
+        elif self.action in ['update', 'partial_update']:
+            return [IsAuthenticated()]
         return super().get_permissions()
 
 
-
-
-# User Registration
+# User Registration (returns JWT tokens)
 class UserRegistration(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -37,31 +29,18 @@ class UserRegistration(generics.CreateAPIView):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response({"detail": "Registration successful"}, status=status.HTTP_201_CREATED)
+        user = serializer.save()
+
+        # Create JWT tokens
+        refresh = RefreshToken.for_user(user)
+        return Response({
+            "user": serializer.data,
+            "refresh": str(refresh),
+            "access": str(refresh.access_token)
+        }, status=status.HTTP_201_CREATED)
 
 
-
-# User Login
-class UserLoginView(generics.GenericAPIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request):
-        email = request.data.get('email')
-        password = request.data.get('password')
-
-        user = authenticate(request, email=email, password=password)
-        if user:
-            token, created = Token.objects.get_or_create(user=user)
-            return Response({
-                "detail": "Login successful",
-                "token": token.key,
-                "email": user.email
-            }, status=status.HTTP_200_OK)
-
-        return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
-
-# User Profile
+# User Profile (requires JWT access token)
 class UserProfileView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]

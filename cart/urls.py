@@ -4,7 +4,7 @@ from .views import ShoppingCartViewSet, CartItemViewSet
 
 router = DefaultRouter()
 router.register(r'', ShoppingCartViewSet, basename='carts')
-router.register(r'', CartItemViewSet, basename='cart-items')
+router.register(r'cart-items', CartItemViewSet, basename='cart-items')
 
 urlpatterns = [
     path('', include(router.urls)),
