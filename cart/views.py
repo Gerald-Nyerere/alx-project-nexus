@@ -43,6 +43,9 @@ class CartItemViewSet(viewsets.ModelViewSet):
         elif self.action == 'destroy':
             return [IsCustomer()]
         return [IsAuthenticated()]
+    
+    def perform_create(self, serializer):
+        # Get or create the cart for the logged-in user
+        cart, _ = ShoppingCart.objects.get_or_create(user=self.request.user)
+        serializer.save(cart=cart)
 
-
-# this is how i should update othervies for trhe permisions because the admin is already added to the permisions

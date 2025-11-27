@@ -20,4 +20,4 @@ class ShoppingCartSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ShoppingCart
-        fields = ['cart_id', 'user', 'items', 'created_at', 'added_at',]
+        fields = ['cart_id', 'user', 'items', 'created_at']
