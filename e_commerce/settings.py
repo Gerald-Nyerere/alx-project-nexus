@@ -154,6 +154,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 
+LOGIN_URL = '/api/users/token/'
+
 SIMPLE_JWT = {
     "USER_ID_FIELD": "user_id",  # tells JWT to use your PK
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
