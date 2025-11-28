@@ -50,7 +50,6 @@ This repository documents my **learnings, challenges, implemented solutions, and
 
 # 🛒 E-Commerce Backend  
 ### **ALX ProDev Backend Engineering – Capstone Project**
-
 This repository contains my **E-Commerce Backend System**, developed as part of the **ALX ProDev Backend Engineering** program.  
 The goal of this project is to build a **scalable, secure, and fully documented backend API** for managing an online product catalog, user authentication, and product exploration features.
 
@@ -104,6 +103,17 @@ The E-Commerce Backend is a real-world simulation of building the backend for a 
 | Database | PostgreSQL |
 | Documentation | Swagger / OpenAPI |
 | Version Control | Git & GitHub |
+
+
+![Status](https://img.shields.io/badge/Project%20Status-Active-brightgreen)
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-5.x-0C4B33?logo=django&logoColor=white)
+![DRF](https://img.shields.io/badge/DRF-REST%20Framework-red)
+![GitHub](https://img.shields.io/badge/GitHub-Repo-black?logo=github)
+![VSCode](https://img.shields.io/badge/Editor-VSCode-blue?logo=visualstudiocode)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Docs](https://img.shields.io/badge/Docs-Swagger%2FRedoc-orange)
+
 
 ---
 
