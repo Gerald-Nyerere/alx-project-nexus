@@ -45,7 +45,10 @@ urlpatterns = [
     path('api/categories/', include('categories.urls')),  
     path('api/carts/', include('cart.urls')),
 
-    
+    # API docs
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-schema'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='redoc-schema'),
+
+     # root redirects to Swagger
+    path('', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-root'),
 ]
