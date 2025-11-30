@@ -142,6 +142,118 @@ The E-Commerce Backend is a real-world simulation of building the backend for a 
 
 ---
 
+## 📡 API Endpoints
+
+<details>
+<summary>🛒 Carts</summary>
+
+| Method | Endpoint | Action |
+|--------|---------|--------|
+| GET    | /carts/cart-items/ | List cart items |
+| POST   | /carts/cart-items/ | Create cart item |
+| GET    | /carts/cart-items/{id}/ | Retrieve cart item |
+| PUT    | /carts/cart-items/{id}/ | Update cart item |
+| PATCH  | /carts/cart-items/{id}/ | Partial update cart item |
+| DELETE | /carts/cart-items/{id}/ | Delete cart item |
+| GET    | /carts/carts/ | List all carts |
+| POST   | /carts/carts/ | Create a cart |
+| GET    | /carts/carts/{cart_id}/ | Retrieve cart |
+| PUT    | /carts/carts/{cart_id}/ | Update cart |
+| PATCH  | /carts/carts/{cart_id}/ | Partial update cart |
+| DELETE | /carts/carts/{cart_id}/ | Delete cart |
+
+</details>
+
+<details>
+<summary>🏷 Categories</summary>
+
+| Method | Endpoint | Action |
+|--------|---------|--------|
+| GET    | /categories/ | List categories |
+| POST   | /categories/ | Create category |
+| GET    | /categories/{category_id}/ | Retrieve category |
+| PUT    | /categories/{category_id}/ | Update category |
+| PATCH  | /categories/{category_id}/ | Partial update category |
+| DELETE | /categories/{category_id}/ | Delete category |
+
+</details>
+
+<details>
+<summary>📦 Products</summary>
+
+| Method | Endpoint | Action |
+|--------|---------|--------|
+| GET    | /products/ | List products |
+| POST   | /products/ | Create product |
+| GET    | /products/{product_id}/ | Retrieve product |
+| PUT    | /products/{product_id}/ | Update product |
+| PATCH  | /products/{product_id}/ | Partial update product |
+| DELETE | /products/{product_id}/ | Delete product |
+
+</details>
+
+<details>
+<summary>📝 Orders & Order Items</summary>
+
+**Orders**
+| Method | Endpoint | Action |
+|--------|---------|--------|
+| GET    | /orders/ | List orders |
+| POST   | /orders/ | Create order |
+| GET    | /orders/{order_id}/ | Retrieve order |
+| PUT    | /orders/{order_id}/ | Update order |
+| PATCH  | /orders/{order_id}/ | Partial update order |
+| DELETE | /orders/{order_id}/ | Delete order |
+
+**Order Items**
+| Method | Endpoint | Action |
+|--------|---------|--------|
+| GET    | /order_items/ | List order items |
+| POST   | /order_items/ | Create order item |
+| GET    | /order_items/{order_item_id}/ | Retrieve order item |
+| PUT    | /order_items/{order_item_id}/ | Update order item |
+| PATCH  | /order_items/{order_item_id}/ | Partial update order item |
+| DELETE | /order_items/{order_item_id}/ | Delete order item |
+
+</details>
+
+<details>
+<summary>⭐ Reviews</summary>
+
+| Method | Endpoint | Action |
+|--------|---------|--------|
+| GET    | /reviews/ | List reviews |
+| POST   | /reviews/ | Create review |
+| GET    | /reviews/{review_id}/ | Retrieve review |
+| PUT    | /reviews/{review_id}/ | Update review |
+| PATCH  | /reviews/{review_id}/ | Partial update review |
+| DELETE | /reviews/{review_id}/ | Delete review |
+
+</details>
+
+<details>
+<summary>👤 Users</summary>
+
+| Method | Endpoint | Action |
+|--------|---------|--------|
+| GET    | /users/ | List users |
+| POST   | /users/register/ | Register user |
+| GET    | /users/profile/ | Retrieve current user profile |
+| POST   | /users/token/ | Obtain JWT token |
+| POST   | /users/token/refresh/ | Refresh JWT token |
+| GET    | /users/{user_id}/ | Retrieve user |
+| PUT    | /users/{user_id}/ | Update user |
+| PATCH  | /users/{user_id}/ | Partial update user |
+| DELETE | /users/{user_id}/ | Delete user |
+
+</details>
+
+**Base URL:** `https://alx-project-nexus-8wjo.onrender.com/api/`  
+**Swagger UI:** [Explore API](https://alx-project-nexus-8wjo.onrender.com/swagger/?format=openapi)
+
+---
+
+
 ## 🚀 How to Run Locally
 
 ```bash
